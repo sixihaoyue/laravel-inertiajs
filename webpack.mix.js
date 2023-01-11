@@ -1,9 +1,5 @@
 const mix = require('laravel-mix');
 const path = require('path');
-
-// THIS IS A TEMPORARY SOLUTION.
-const { hmrOptions, devServer } = require('./webpack.fix');
-
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -16,18 +12,8 @@ const { hmrOptions, devServer } = require('./webpack.fix');
  */
 
 mix.extract();
-
-mix
+mix.options({ 'cssModuleIdentifier': '[name]__[local]--[hash:base64:5]' })
   .ts('resources/js/app.tsx', 'public/js')
-  .react()
-  .postCss('resources/css/app.css', 'public/css/app.css', [
-    require('postcss-import'),
-    require('tailwindcss'),
-    require('autoprefixer')
-  ])
-  .options({
-    hmrOptions: hmrOptions
-  })
   .webpackConfig({
     output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
     resolve: {
@@ -35,7 +21,6 @@ mix
         'resources': path.resolve('resources')
       }
     },
-    devServer: devServer
   })
   .version()
   .sourceMaps();

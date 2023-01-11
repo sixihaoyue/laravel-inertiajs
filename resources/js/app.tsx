@@ -15,7 +15,6 @@ render(
   <InertiaApp
     initialPage={init}
     resolveComponent={name => {
-        console.log(import(`./Pages/${name}`));
         return import(`./Pages/${name}`).then(module => module.default)
       }
     }

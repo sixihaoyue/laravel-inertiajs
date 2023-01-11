@@ -1,10 +1,11 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import Layout from 'resources/js/Shared/Layout';
-
+import styles from './index.module.scss';
+console.log(styles, 222)
 const Index = () => {
   return (
     <div>
-      <h1 className="mb-8 text-3xl font-bold">Reports</h1>
+      <h1 className={styles['test2']}>Reports</h1>
     </div>
   );
 };
