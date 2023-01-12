@@ -1,6 +1,7 @@
 const mix = require('laravel-mix');
 const path = require('path');
 const sassGlobImporter = require('node-sass-glob-importer');
+require('laravel-mix-clean');
 
 /*
  |--------------------------------------------------------------------------
@@ -25,5 +26,6 @@ mix.options({ 'cssModuleIdentifier': '[name]__[local]--[hash:base64:5]' })
       }
     },
   })
+  .clean({ cleanOnceBeforeBuildPatterns: [ 'js/*', 'css/*' ] })
   .version()
   .sourceMaps();

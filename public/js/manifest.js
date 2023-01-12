@@ -23,12 +23,15 @@
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
 /******/ 			id: moduleId,
-/******/ 			// no module.loaded needed
+/******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -112,7 +115,7 @@
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_js_Pages_Error_tsx":"d27d0f85a714f7a6","resources_js_Pages_test_Index_tsx":"31c0138fe830db4d","resources_js_Pages_test_index_module_scss":"676e5139f19cf75e","resources_js_Pages_test_test_scss":"7b0a9f7c9e39fdde","resources_js_Pages_test2_Index_tsx":"b8f830deb933a1b2","resources_js_Pages_test2_index_module_scss":"478fbbc898381ec3","resources_js_Pages_test2_test_scss":"c4e933ebe3baa981"}[chunkId] + "";
+/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_js_pages_error_tsx":"25b1fef63861a8fc","resources_js_pages_test_index_tsx":"619908909ad13c56","resources_js_pages_test_index_module_scss":"25ba0e7b5304de18","resources_js_pages_test_test_scss":"e01bdcad1c673145","resources_js_pages_test2_index_tsx":"3016f84a7e243207","resources_js_pages_test2_index_module_scss":"9c85258fe17b1c26","resources_js_pages_test2_test_scss":"cd614cab576f0e66"}[chunkId] + "";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -121,8 +124,20 @@
 /******/ 		// This function allow to reference all chunks
 /******/ 		__webpack_require__.miniCssF = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return undefined;
+/******/ 			return "" + chunkId + ".css";
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
@@ -186,6 +201,15 @@
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/node module decorator */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nmd = (module) => {
+/******/ 			module.paths = [];
+/******/ 			if (!module.children) module.children = [];
+/******/ 			return module;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
 /******/ 		__webpack_require__.p = "/";
@@ -199,7 +223,8 @@
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/js/manifest": 0
+/******/ 			"/js/manifest": 0,
+/******/ 			"css/app": 0
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.j = (chunkId, promises) => {
@@ -211,7 +236,7 @@
 /******/ 					if(installedChunkData) {
 /******/ 						promises.push(installedChunkData[2]);
 /******/ 					} else {
-/******/ 						if("/js/manifest" != chunkId) {
+/******/ 						if(!/^(\/js\/manifest|css\/app)$/.test(chunkId)) {
 /******/ 							// setup Promise in chunk cache
 /******/ 							var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
 /******/ 							promises.push(installedChunkData[2] = promise);

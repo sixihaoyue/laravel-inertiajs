@@ -8,11 +8,11 @@ class TestController extends Controller
 {
     public function test()
     {
-        return Inertia::render('Test/Index', ['test' => 'aaa']);
+        return Inertia::render('test/index', ['test' => 'aaa']);
     }
 
     public function test2()
     {
-        return Inertia::render('Test2/Index', ['test' => 'aaa']);
+        return Inertia::render('test2/index', ['test' => 'aaa']);
     }
 }
