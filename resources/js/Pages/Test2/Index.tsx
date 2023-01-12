@@ -6,8 +6,8 @@ import styles from './index.module.scss';
 const Index = () => {
   return (
     <div>
-      <h1 className={styles['test2']}>Reports</h1>
-      <Link replace href="/test2">
+      <h1 className={styles['test2']}>Reports2</h1>
+      <Link replace href="/500">
         500 error
       </Link>
     </div>

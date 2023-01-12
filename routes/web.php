@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('test')->name('test')->uses('TestController@index');
+Route::get('test')->name('test')->uses('TestController@test');
+Route::get('test2')->name('test2')->uses('TestController@test2');

@@ -1,5 +1,7 @@
 const mix = require('laravel-mix');
 const path = require('path');
+const sassGlobImporter = require('node-sass-glob-importer');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -14,6 +16,7 @@ const path = require('path');
 mix.extract();
 mix.options({ 'cssModuleIdentifier': '[name]__[local]--[hash:base64:5]' })
   .ts('resources/js/app.tsx', 'public/js')
+  .sass('resources/css/app.scss', 'public/css', { sassOptions: { importer: sassGlobImporter() } })
   .webpackConfig({
     output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
     resolve: {

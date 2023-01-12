@@ -112,7 +112,7 @@
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_js_Pages_Test_Index_tsx":"6fffeb91a0bbda81","resources_js_Pages_Test_index_module_scss":"e3e204b8e80ddcf8"}[chunkId] + "";
+/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_js_Pages_Error_tsx":"d89db784d7f39f08","resources_js_Pages_Test_Index_tsx":"3299aef869bce305","resources_js_Pages_Test_index_module_scss":"1e9b827dafc5a8d3","resources_js_Pages_Test_test_scss":"8c69cf4989414cde","resources_js_Pages_Test2_Index_tsx":"47d3a43f1008a4e8","resources_js_Pages_Test2_index_module_scss":"2bd7eed4de476601"}[chunkId] + "";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -121,7 +121,7 @@
 /******/ 		// This function allow to reference all chunks
 /******/ 		__webpack_require__.miniCssF = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return undefined;
+/******/ 			return "" + chunkId + ".css";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -199,7 +199,8 @@
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/js/manifest": 0
+/******/ 			"/js/manifest": 0,
+/******/ 			"css/app": 0
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.j = (chunkId, promises) => {
@@ -211,7 +212,7 @@
 /******/ 					if(installedChunkData) {
 /******/ 						promises.push(installedChunkData[2]);
 /******/ 					} else {
-/******/ 						if("/js/manifest" != chunkId) {
+/******/ 						if(!/^(\/js\/manifest|css\/app)$/.test(chunkId)) {
 /******/ 							// setup Promise in chunk cache
 /******/ 							var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
 /******/ 							promises.push(installedChunkData[2] = promise);

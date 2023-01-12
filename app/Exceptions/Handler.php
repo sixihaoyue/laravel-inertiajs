@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Support\Facades\App;
+use Inertia\Inertia;
 
 class Handler extends ExceptionHandler
 {
@@ -37,5 +39,28 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $exception
+     * @return \Illuminate\Http\Response
+     */
+    public function render($request, Throwable $exception)
+    {
+        $response = parent::render($request, $exception);
+
+        if (
+            (App::environment('production'))
+            && $request->header('X-Inertia')
+            && in_array($response->status(), [500, 503, 404, 403])
+        ) {
+            return Inertia::render('Error', ['status' => $response->status()])
+                ->toResponse($request)
+                ->setStatusCode($response->status());
+        }
+        return $response;
     }
 }
