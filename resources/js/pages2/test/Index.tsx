@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Layout from 'resources/js/Shared/Layout';
+import Layout from 'resources/js/layouts/index';
 import { Link } from '@inertiajs/inertia-react';
 import styles from './index.module.scss';
 
@@ -8,7 +8,7 @@ const Index = () => {
     <div>
       <h1 className={styles['test2']}>Reports</h1>
       <Link replace href="/test2">
-        500 error
+        Reports2
       </Link>
     </div>
   );
