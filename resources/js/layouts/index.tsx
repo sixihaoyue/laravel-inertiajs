@@ -6,8 +6,6 @@ type LayoutProps = PropsWithChildren & {
 
 class Layout extends React.PureComponent<LayoutProps> {
   render() {
-    console.log(this.props);
-
     return (
       <div>
           {this.props.children}

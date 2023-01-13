@@ -5,17 +5,13 @@ import styles from './index.module.scss';
 import { session } from 'resources/js/stores';
 
 const Index = () => {
+
   return (
     <div>
-      <h1 className={styles['test2']}>Reports2</h1>
-      <button onClick={(e) => {
-        e.preventDefault();
-        console.log(session.user) ;
-      }}>
-        检查
-      </button>
-      <Link replace href="/test">
-        Reports1
+      <h1 className={styles['test2']}>User info</h1>
+      <p>{ JSON.stringify(session.user) }</p>
+      <Link replace href="/cart/show">
+        Cart List
       </Link>
     </div>
   );

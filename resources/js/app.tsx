@@ -4,15 +4,7 @@ import { InertiaProgress } from '@inertiajs/progress';
 import { Inertia } from '@inertiajs/inertia'
 import * as stores from './stores';
 import { Provider as StoreProvider } from 'mobx-react';
-
-Inertia.on('error', (errors) => {
-  console.log(errors)
-})
-
-Inertia.on('invalid', (event) => {
-  console.log(`An invalid Inertia response was received.`)
-  console.log(event)
-})
+import { session } from 'resources/js/stores';
 
 InertiaProgress.init({
   color: '#ED8936',
@@ -28,7 +20,8 @@ root.render(
     <InertiaApp
       initialComponent={null}
       initialPage={init}
-      resolveComponent={name => {
+      resolveComponent={async (name) => {
+          await session.auth()
           return import(`./pages/${name}`).then(module => module.default)
         }
       }

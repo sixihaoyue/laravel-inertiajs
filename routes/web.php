@@ -12,9 +12,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::namespace('Web')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    Route::post('cart/add')->uses('CartController@add');
+    Route::get('cart/show')->uses('CartController@show')->name('cart.show');
+    Route::get('cart/clear')->uses('CartController@clear');
 
-Route::get('/', function () {
-    return view('welcome');
+    Route::get('user/info')->uses('UserController@info');
+    Route::get('user/show')->uses('UserController@show');
 });
-Route::get('test')->name('test')->uses('TestController@test');
-Route::get('test2')->name('test2')->uses('TestController@test2');
+
