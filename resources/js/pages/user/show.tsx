@@ -6,10 +6,10 @@ import { session } from 'resources/js/stores';
 
 const Index = () => {
   const test = usePage().props.test as string;
-
+  console.log(2)
   return (
     <div>
-      <h1 className={styles['test2']}>User info</h1>
+      <h1 className={styles['test2']}>User info 2</h1>
       <p>{ test }</p>
       <p>{ JSON.stringify(session.user) }</p>
       <Link href="/cart/show">

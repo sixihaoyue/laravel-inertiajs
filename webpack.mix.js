@@ -15,16 +15,18 @@ require('laravel-mix-clean');
 
 mix.extract();
 mix.options({ 'cssModuleIdentifier': '[name]__[local]--[hash:base64:5]' })
-  .ts('resources/js/app.tsx', 'public/js')
-  .react({extractStyles: 'public/css/app.css'})
+  .ts('resources/js/app.tsx', 'build/js')
+  .react({extractStyles: 'build/css/app.css'})
   .webpackConfig({
-    output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
+    output: { chunkFilename: 'build/js/[name].js?id=[chunkhash]' },
     resolve: {
       alias: {
         'resources': path.resolve('resources')
       }
     },
   })
-  .clean({ cleanOnceBeforeBuildPatterns: [ 'js/*', 'css/*' ] })
+  .clean({
+    cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, 'public/build/**/*')],
+   })
   .version()
   .sourceMaps();
