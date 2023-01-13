@@ -10,7 +10,7 @@
     "production": "mix --production",
     "watch-ssr": "npm run watch --ssr",
     "prod-ssr": "npm run production  --ssr",
-    "ssr": "supervisor  public/ssr/app.js"
+    "ssr": "./node_modules/.bin/supervisor  public/ssr/app.js"
   },
   "dependencies": {
     "@babel/preset-react": "^7.12.13",
@@ -44,6 +44,7 @@
     "postcss": "^8.2.10",
     "react-refresh": "^0.9.0",
     "resolve-url-loader": "^5.0.0",
+    "supervisor": "^0.12.0",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.4"
   }
