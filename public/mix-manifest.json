@@ -1,6 +1,6 @@
 {
-    "/build/js/app.js": "/build/js/app.js?id=2a90eedb14053d13c8393403c6a4bcfe",
-    "/build/js/manifest.js": "/build/js/manifest.js?id=1bf05e307eeb6b5fcba8f9b6468276e0",
-    "/build/css/app.css": "/build/css/app.css?id=d88fe047f17fa135d3712dad0e5344b4",
-    "/build/js/vendor.js": "/build/js/vendor.js?id=8a5768a01718be9bb007ac308ab09149"
+    "/release/js/app.js": "/release/js/app.js?id=8a0412f71c92772006084569342e9607",
+    "/release/js/manifest.js": "/release/js/manifest.js?id=a7e90877b992ddac7bfa4b6bf3cafd32",
+    "/release/css/app.css": "/release/css/app.css?id=d88fe047f17fa135d3712dad0e5344b4",
+    "/release/js/vendor.js": "/release/js/vendor.js?id=52d9d00cd95258c8d493cff27efedc02"
 }

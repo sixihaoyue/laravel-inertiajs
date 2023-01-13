@@ -19,14 +19,14 @@ if (process.env.npm_config_ssr) {
   require('laravel-mix-clean');
   mix.extract();
   mix.options({ cssModuleIdentifier })
-    .ts('resources/js/app.tsx', 'build/js')
-    .react({extractStyles: 'build/css/app.css'})
+    .ts('resources/js/app.tsx', 'release/js')
+    .react({extractStyles: 'release/css/app.css'})
     .webpackConfig({
-      output: { chunkFilename: 'build/js/[name].js?id=[chunkhash]' },
+      output: { chunkFilename: 'release/js/[name].js?id=[chunkhash]' },
       resolve: { alias },
     })
     .clean({
-      cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, 'public/build/**/*')],
+      cleanOnceBeforeBuildPatterns: ['release'],
     })
     .version()
     .sourceMaps();
