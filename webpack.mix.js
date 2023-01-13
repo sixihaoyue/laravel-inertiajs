@@ -1,6 +1,5 @@
 const mix = require('laravel-mix');
 const path = require('path');
-const sassGlobImporter = require('node-sass-glob-importer');
 require('laravel-mix-clean');
 
 /*
@@ -17,7 +16,7 @@ require('laravel-mix-clean');
 mix.extract();
 mix.options({ 'cssModuleIdentifier': '[name]__[local]--[hash:base64:5]' })
   .ts('resources/js/app.tsx', 'public/js')
-  .sass('resources/css/app.scss', 'public/css', { sassOptions: { importer: sassGlobImporter() } })
+  .react({extractStyles: 'public/css/app.css'})
   .webpackConfig({
     output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
     resolve: {

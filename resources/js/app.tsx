@@ -5,6 +5,7 @@ import { Inertia } from '@inertiajs/inertia'
 import * as stores from './stores';
 import { Provider as StoreProvider } from 'mobx-react';
 import { session } from 'resources/js/stores';
+require('resources/css/app.scss')
 
 InertiaProgress.init({
   color: '#ED8936',

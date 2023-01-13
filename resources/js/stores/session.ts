@@ -31,6 +31,7 @@ export class User {
 export class SessionStore {
   @observable islogin = false;
   @observable user: User | null = null;
+  @observable carts: string[] = [];
 
   /** 判断用户是否已登录 */
   @computed get loggedIn() {
@@ -70,6 +71,12 @@ export class SessionStore {
     } catch (e) {}
     return false;
   });
+
+  @action async setCart(carts: string[]) {
+    // 写入 localStorage
+    console.log(carts, 'setCart')
+    this.carts = carts;
+  }
 };
 
 const session = new SessionStore();

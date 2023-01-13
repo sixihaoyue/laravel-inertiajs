@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import Layout from 'resources/js/layouts/index';
 import { Link, usePage } from '@inertiajs/inertia-react';
 import { session } from 'resources/js/stores';
@@ -17,12 +17,14 @@ const CartShowPage = ({  }) => {
   }
 
   const cartList = usePage().props.cartList as string[];
+  // test ssr mobx
+  session.setCart(cartList);
   session.user?.setCart(cartList);
-
   return (
     <div>
       <h1>Cart List</h1>
-      <p>{JSON.stringify(session.user?.carts)}</p>
+      <p>{JSON.stringify(session.carts)}</p>
+      <p>{JSON.stringify(cartList)}</p>
       <Link href="/user/show">
         UserInfo
       </Link>
@@ -30,7 +32,6 @@ const CartShowPage = ({  }) => {
       <Link href="/cart/clear" className='ml-20'>
         ClearCarts
       </Link>
-
 
       <form onSubmit={submit}>
         <input type="text" value={data.id} onChange={e => setData('id', e.target.value)} />
