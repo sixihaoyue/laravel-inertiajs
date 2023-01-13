@@ -4,13 +4,13 @@
     "dev": "npm run development",
     "development": "mix",
     "watch": "mix watch",
-    "ssr": "supervisor  public/ssr/app.js",
-    "watch-ssr": "npm run watch -- --mix-config=webpack.ssr.mix.js",
     "watch-poll": "mix watch -- --watch-options-poll=1000",
     "hot": "mix watch --hot",
-    "prod-ssr": "npm run production -- --mix-config=webpack.ssr.mix.js",
     "prod": "npm run production",
-    "production": "mix --production"
+    "production": "mix --production",
+    "watch-ssr": "npm run watch --ssr",
+    "prod-ssr": "npm run production  --ssr",
+    "ssr": "supervisor  public/ssr/app.js"
   },
   "dependencies": {
     "@babel/preset-react": "^7.12.13",
